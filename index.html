@@ -1,3 +1,90 @@
+<!-- Form with Formspree integration -->
+<form action="https://formspree.io/f/meoararg" method="POST">
+  <!-- Full Name -->
+  <label>
+    Full Name:
+    <input type="text" name="full_name" placeholder="Full Name" required>
+  </label>
+  <br>
+
+  <!-- Active Phone Number -->
+  <label>
+    Active Phone Number:
+    <input type="tel" name="phone_number" placeholder="Active Phone Number" required>
+  </label>
+  <br>
+
+  <!-- Email Address -->
+  <label>
+    Email Address:
+    <input type="email" name="email" placeholder="Email Address" required>
+  </label>
+  <br>
+
+  <!-- Select Your Provider (Dropdown) -->
+  <label>
+    Select Your Provider:
+    <select name="provider" required>
+      <option value="" disabled selected>-- Choose One --</option>
+      <option value="ringcentral">RingCentral</option>
+      <option value="openphone">OpenPhone</option>
+      <option value="twillio">Twillio</option>
+      <option value="signalwire">Signalwire</option>
+      <option value="other">Other</option>
+    </select>
+  </label>
+  <br>
+
+  <!-- Description -->
+  <label>
+    Description:
+    <textarea name="description" placeholder="Share your goals or preferences if you selected 'Other'"></textarea>
+  </label>
+  <br>
+
+  <!-- Book a Free 1-on-1 Consultation (Heading) -->
+  <h3>Book a Free 1-on-1 Consultation</h3>
+
+  <!-- Date -->
+  <label>
+    Date:
+    <input type="date" name="consultation_date" value="2025-02-04" required>
+  </label>
+  <br>
+
+  <!-- Time (Dropdown) -->
+  <label>
+    Time:
+    <select name="consultation_time" required>
+      <option value="" disabled selected>-- Select Time --</option>
+      <option value="09:00">9:00 AM</option>
+      <option value="10:00">10:00 AM</option>
+      <option value="11:00">11:00 AM</option>
+      <option value="12:00">12:00 PM</option>
+      <option value="13:00">1:00 PM</option>
+      <option value="14:00">2:00 PM</option>
+      <option value="15:00">3:00 PM</option>
+    </select>
+  </label>
+  <br>
+
+  <!-- Time Zone (Dropdown) -->
+  <label>
+    Time Zone:
+    <select name="time_zone" required>
+      <option value="" disabled selected>-- Select Timezone --</option>
+      <option value="EST">EST</option>
+      <option value="PST">PST</option>
+      <option value="CST">CST</option>
+      <option value="GMT">GMT</option>
+    </select>
+  </label>
+  <br>
+
+  <!-- Submit Button -->
+  <button type="submit">Lock In My Registration</button>
+</form>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
