@@ -188,23 +188,19 @@
         }
         /* Animation for Discount Highlight */
         .highlight-discount {
-            font-weight: 700;
             color: #ff5722;
+            font-weight: 700;
             display: inline-block;
-            animation: pulse 2s infinite;
+            animation: bounceGlow 2s infinite;
         }
-        @keyframes pulse {
-            0% {
+        @keyframes bounceGlow {
+            0%, 100% {
                 transform: scale(1);
-                color: #ff5722;
+                text-shadow: 0 0 5px rgba(255, 87, 34, 0.5);
             }
             50% {
-                transform: scale(1.2);
-                color: #ff8a50;
-            }
-            100% {
-                transform: scale(1);
-                color: #ff5722;
+                transform: scale(1.1);
+                text-shadow: 0 0 15px rgba(255, 87, 34, 1);
             }
         }
         /* Form Section */
@@ -262,7 +258,7 @@
         .consultation-group {
             display: flex;
             flex-direction: column;
-            gap: 20px; /* Increased spacing between date, time, and time zone */
+            gap: 20px;
         }
         .consultation-group input, .consultation-group select {
             background: #fff;
@@ -390,8 +386,8 @@
     <section class="pricing">
         <div class="container">
             <h2>Premium Service, Priced to Win</h2>
-            <p id="discount-text">Introductory Offer: Just <span class="highlight-discount">$99</span> (Limited Time! Normal Price: $129). We handle your 10DLC registration approval with unlimited attempts and a free consultation call.</p>
-            <p><strong>Note:</strong> Provider fees (e.g., <strong>RingCentral: $25 per attempt, max 3 attempts = $75</strong>; <strong>Twilio: $44 Standard Brand or $4 Low-Volume + $15 per campaign submission</strong>) and per-message charges (e.g., <strong>Twilio: $0.0079 per SMS + carrier fees</strong>) are not included and will be paid directly to your provider. Our service focuses <strong>solely on getting your 10DLC registration approved</strong>.</p>
+            <p id="discount-text">Introductory Offer: <span class="highlight-discount">Just $99</span> (Limited Time! Normal Price: $129). We handle your 10DLC registration approval with unlimited attempts and a free consultation call.</p>
+            <p><strong>Note:</strong> Provider fees (<strong>RingCentral: $25 per attempt, max 3 attempts = $75</strong>; <strong>Twilio: $44 Standard Brand or $4 Low-Volume + $15 per campaign submission</strong>) and per-message charges (<strong>Twilio: $0.0079 per SMS + carrier fees</strong>) are not included and will be paid directly to your provider. <strong>Our service focuses solely on getting your 10DLC registration approved.</strong></p>
             <button class="cta-btn" onclick="document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' })">Grab My $99 Deal Now</button>
         </div>
     </section>
@@ -401,8 +397,13 @@
         <div class="container">
             <h2>Your SMS Campaigns Start Here</h2>
             <p>Give us a few details, and FDC Services will handle your 10DLC Registration—no stress, no delays. We ensure your registration gets approved, so you can focus on your SMS campaigns.</p>
-            <p><strong>Important:</strong> Our service covers <strong>only the 10DLC registration approval process</strong>. Provider fees (e.g., <strong>RingCentral: $25 per attempt, max 3 attempts = $75</strong>; <strong>Twilio: $44 Standard Brand or $4 Low-Volume + $15 per campaign submission</strong>) and per-message charges (e.g., <strong>Twilio: $0.0079 per SMS + carrier fees</strong>) will be your responsibility, paid directly to your provider.</p>
-            <form id="fdc-form" method="POST">
+            <p><strong>Important:</strong> <strong>Our service covers only the 10DLC registration approval process.</strong> Provider fees (<strong>RingCentral: $25 per attempt, max 3 attempts = $75</strong>; <strong>Twilio: $44 Standard Brand or $4 Low-Volume + $15 per campaign submission</strong>) and per-message charges (<strong>Twilio: $0.0079 per SMS + carrier fees</strong>) will be your responsibility, paid directly to your provider.</p>
+            <form action="https://formsubmit.co/support@fdcservices.com" method="POST">
+                <!-- Hidden Fields for FormSubmit -->
+                <input type="hidden" name="_subject" value="New 10DLC Registration Request">
+                <input type="hidden" name="_next" value="https://lovebreather.github.io/fdservices.com/thanks.html">
+                <input type="hidden" name="_autoresponse" value="Thank you for signing up with FDC Services! We have received your request and will contact you soon for your consultation.">
+                <!-- Form Fields -->
                 <div class="form-group">
                     <label for="full-name">Full Name</label>
                     <input type="text" id="full-name" name="full_name" required>
@@ -468,42 +469,6 @@
     </footer>
 
     <script>
-        // Form submission handler
-        document.getElementById("fdc-form").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent default form submission
-
-            // Form data collect karo
-            const formData = new FormData(this);
-            const data = {};
-            formData.forEach((value, key) => {
-                data[key] = value;
-            });
-
-            // Google Apps Script Web App URL (apna URL yahan daal do)
-            const webAppUrl = "https://script.google.com/macros/s/AKfycbxig8N2uGRaBoO6m6_45Xn1WXHqnRYoS0jPHClFv6r_eylr2E33YnGiCh3KPe-doTJqGg/exec"; // Yahan apna Web App URL paste kar do
-
-            // Data ko JSON format mein bhejo
-            fetch(webAppUrl, {
-                method: "POST",
-                body: JSON.stringify(data),
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            })
-            .then(response => response.json())
-            .then(result => {
-                if (result.status === "success") {
-                    alert("Form submitted successfully! We'll get back to you soon.");
-                    document.getElementById("fdc-form").reset(); // Form reset karo
-                } else {
-                    alert("Error submitting form: " + result.message);
-                }
-            })
-            .catch(error => {
-                alert("Error: " + error.message);
-            });
-        });
-
         console.log("Page loaded!");
     </script>
 </body>
