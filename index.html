@@ -1,59 +1,476 @@
-<form action="https://formsubmit.co/cs@ijtechnologz.com" method="POST">
-    <!-- Hidden Fields for FormSubmit -->
-    <input type="hidden" name="_subject" value="New 10DLC Registration Request">
-    <input type="hidden" name="_next" value="https://lovebreather.github.io/fdservices.com/thanks.html">
-    <input type="hidden" name="_autoresponse" value="Thank you for signing up with FDC Services! We have received your request and will contact you soon for your consultation.">
-    <input type="hidden" name="_captcha" value="true"> <!-- CAPTCHA for Verification -->
-    <!-- Form Fields -->
-    <div class="form-group">
-        <label for="full-name">Full Name</label>
-        <input type="text" id="full-name" name="full_name" required>
-    </div>
-    <div class="form-group">
-        <label for="phone">Active Phone Number</label>
-        <input type="tel" id="phone" name="phone_number" required>
-    </div>
-    <div class="form-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" required>
-    </div>
-    <div class="form-group">
-        <label for="provider">Select Your Provider</label>
-        <select id="provider" name="provider" required>
-            <option value="">-- Choose One --</option>
-            <option value="RingCentral">RingCentral</option>
-            <option value="OpenPhone">OpenPhone</option>
-            <option value="Twilio">Twilio</option>
-            <option value="SignalWire">SignalWire</option>
-            <option value="Other">Other</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="description">Description</label>
-        <textarea id="description" name="description" placeholder="Share your goals or provider details if you selected 'Other'"></textarea>
-    </div>
-    <div class="form-group">
-        <label>Book a Free 1-on-1 Consultation</label>
-        <div class="consultation-group">
-            <input type="date" id="consult-date" name="consultation_date" value="2025-02-04" required>
-            <select id="consult-time" name="consultation_time" required>
-                <option value="">-- Select Time --</option>
-                <option value="09:00">9:00 AM</option>
-                <option value="10:00">10:00 AM</option>
-                <option value="11:00">11:00 AM</option>
-                <option value="12:00">12:00 PM</option>
-                <option value="13:00">1:00 PM</option>
-                <option value="14:00">2:00 PM</option>
-                <option value="15:00">3:00 PM</option>
-            </select>
-            <select id="time-zone" name="time_zone" required>
-                <option value="">-- Select Time Zone --</option>
-                <option value="EST">EST</option>
-                <option value="PST">PST</option>
-                <option value="CST">CST</option>
-                <option value="GMT">GMT</option>
-            </select>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FDC Services - 10 DLC Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            line-height: 1.6;
+            color: #2d2d2d;
+            background-color: #f4f7fa;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg);
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero p {
+            font-size: 1.3em;
+            font-weight: 300;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-btn {
+            background: linear-gradient(45deg, #ff5722, #ff8a50);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        /* Why Choose Us */
+        .why-choose {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+        .why-choose h2 {
+            font-size: 2.5em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1a73e8;
+        }
+        .why-choose p {
+            font-size: 1.1em;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .benefit {
+            background: #f4f7fa;
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .benefit:hover {
+            transform: translateY(-5px);
+            background: #e8eef5;
+        }
+        .benefit strong {
+            font-weight: 600;
+            color: #ff5722;
+        }
+        /* How It Works */
+        .how-it-works {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #f4f7fa;
+        }
+        .how-it-works h2 {
+            font-size: 2.5em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1a73e8;
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .step {
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        .step h3 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #ff5722;
+            margin-bottom: 10px;
+        }
+        /* Testimonials */
+        .testimonials {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+        .testimonials h2 {
+            font-size: 2.5em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1a73e8;
+        }
+        .testimonial {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-style: italic;
+            font-weight: 300;
+            font-size: 1.1em;
+        }
+        .testimonial strong {
+            display: block;
+            margin-top: 10px;
+            font-style: normal;
+            font-weight: 600;
+            color: #ff5722;
+        }
+        /* Pricing */
+        .pricing {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #f4f7fa;
+        }
+        .pricing h2 {
+            font-size: 2.5em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1a73e8;
+        }
+        .pricing p {
+            font-size: 1.1em;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        /* Animation for Discount Highlight */
+        .highlight-discount {
+            color: #ff5722;
+            font-weight: 700;
+            display: inline-block;
+            animation: bounceGlow 2s infinite;
+        }
+        @keyframes bounceGlow {
+            0%, 100% {
+                transform: scale(1);
+                text-shadow: 0 0 5px rgba(255, 87, 34, 0.5);
+            }
+            50% {
+                transform: scale(1.1);
+                text-shadow: 0 0 15px rgba(255, 87, 34, 1);
+            }
+        }
+        /* Form Section */
+        .form-section {
+            background: #fff;
+            padding: 60px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin: 60px 20px;
+        }
+        .form-section h2 {
+            font-size: 2.5em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1a73e8;
+        }
+        .form-section p {
+            font-size: 1.1em;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 30px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2d2d2d;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 400;
+            background: #fafafa;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: #1a73e8;
+            outline: none;
+        }
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        .form-group select {
+            appearance: none;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="gray"><polygon points="0,0 12,0 6,12"/></svg>') no-repeat right 15px center;
+            background-size: 12px;
+        }
+        /* Consultation Fields with Increased Spacing */
+        .consultation-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .consultation-group input, .consultation-group select {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            color: #666;
+        }
+        .consultation-group select {
+            color: #999;
+        }
+        .consultation-group select option {
+            color: #2d2d2d;
+        }
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            color: white;
+        }
+        footer p {
+            font-weight: 300;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            .cta-btn {
+                padding: 12px 30px;
+                font-size: 1em;
+            }
+            .why-choose h2, .how-it-works h2, .testimonials h2, .pricing h2, .form-section h2 {
+                font-size: 2em;
+            }
+            .form-section {
+                padding: 40px 20px;
+                margin: 40px 10px;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8em;
+            }
+            .hero p {
+                font-size: 0.9em;
+            }
+            .cta-btn {
+                padding: 10px 25px;
+                font-size: 0.9em;
+            }
+            .why-choose h2, .how-it-works h2, .testimonials h2, .pricing h2, .form-section h2 {
+                font-size: 1.8em;
+            }
+            .form-section {
+                padding: 30px 15px;
+                margin: 30px 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Unlock SMS Success with FDC Services</h1>
+            <p>Don’t let the complex 10 DLC Registration process hold you back. We’ll get you approved for RingCentral, OpenPhone, Twilio, SignalWire—or any provider—in record time.</p>
+            <button class="cta-btn" onclick="document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' })">Claim My Registration Spot Now</button>
         </div>
-    </div>
-    <button type="submit" class="cta-btn">Lock In My Registration</button>
-</form>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose">
+        <div class="container">
+            <h2>Why Choose FDC Services?</h2>
+            <p>The 10 DLC Registration process is a maze of paperwork, rules, and delays—unless you have us. We specialize in fast-tracking approvals for any provider. Why struggle when you can succeed?</p>
+            <div class="benefits">
+                <div class="benefit"><strong>Approvals in Days</strong><br>Not weeks—get started fast.</div>
+                <div class="benefit"><strong>Any Provider</strong><br>From Twilio to SignalWire.</div>
+                <div class="benefit"><strong>Unbeatable Value</strong><br>Premium service, fair price.</div>
+                <div class="benefit"><strong>Expert Guidance</strong><br>We’ve got your back.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <h3>Step 1: We Understand Your Needs</h3>
+                    <p>We start with a one-on-one consultation to fully understand your goals and requirements.</p>
+                </div>
+                <div class="step">
+                    <h3>Step 2: We Do the Heavy Lifting</h3>
+                    <p>Leave everything to us—our experts handle the entire 10 DLC Registration process for you.</p>
+                </div>
+                <div class="step">
+                    <h3>Step 3: Start Texting</h3>
+                    <p>Get approved and watch your SMS campaigns soar with seamless support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonial">
+                <p>"We were stuck with rejections for our 10 DLC Registration. FDC Services stepped in, got us verified and approved, and now our SMS campaigns are thriving!"</p>
+                <strong>IJ Wireless Inc.</strong>
+            </div>
+            <div class="testimonial">
+                <p>"FDC Services made the 10 DLC process effortless. They handled everything, and now we’re seeing huge success with SMS in play. SMS support is critical, and they delivered!"</p>
+                <strong>Magnet Wireless Inc.</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing">
+        <div class="container">
+            <h2>Premium Service, Priced to Win</h2>
+            <p id="discount-text">Introductory Offer: <span class="highlight-discount">Just $99</span> (Limited Time! Normal Price: $129). We handle your 10DLC registration approval with unlimited attempts and a free consultation call.</p>
+            <p><strong>Note:</strong> Provider fees (<strong>RingCentral: $25 per attempt, max 3 attempts = $75</strong>; <strong>Twilio: $44 Standard Brand or $4 Low-Volume + $15 per campaign submission</strong>) and per-message charges (<strong>Twilio: $0.0079 per SMS + carrier fees</strong>) are not included and will be paid directly to your provider. <strong>Our service focuses solely on getting your 10DLC registration approved.</strong></p>
+            <button class="cta-btn" onclick="document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' })">Grab My $99 Deal Now</button>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section id="form-section" class="form-section">
+        <div class="container">
+            <h2>Your SMS Campaigns Start Here</h2>
+            <p>Give us a few details, and FDC Services will handle your 10DLC Registration—no stress, no delays. We ensure your registration gets approved, so you can focus on your SMS campaigns.</p>
+            <p><strong>Important:</strong> <strong>Our service covers only the 10DLC registration approval process.</strong> Provider fees (<strong>RingCentral: $25 per attempt, max 3 attempts = $75</strong>; <strong>Twilio: $44 Standard Brand or $4 Low-Volume + $15 per campaign submission</strong>) and per-message charges (<strong>Twilio: $0.0079 per SMS + carrier fees</strong>) will be your responsibility, paid directly to your provider.</p>
+            <form action="https://formsubmit.co/cs@ijtechnologz.com" method="POST">
+                <!-- Hidden Fields for FormSubmit -->
+                <input type="hidden" name="_subject" value="New 10DLC Registration Request">
+                <input type="hidden" name="_next" value="https://lovebreather.github.io/fdcservices.com/thanks.html">
+                <input type="hidden" name="_autoresponse" value="Thank you for signing up with FDC Services! We have received your request and will contact you soon for your consultation.">
+                <input type="hidden" name="_captcha" value="true">
+                <!-- Form Fields -->
+                <div class="form-group">
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" name="full_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Active Phone Number</label>
+                    <input type="tel" id="phone" name="phone_number" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="provider">Select Your Provider</label>
+                    <select id="provider" name="provider" required>
+                        <option value="">-- Choose One --</option>
+                        <option value="RingCentral">RingCentral</option>
+                        <option value="OpenPhone">OpenPhone</option>
+                        <option value="Twilio">Twilio</option>
+                        <option value="SignalWire">SignalWire</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" placeholder="Share your goals or provider details if you selected 'Other'"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Book a Free 1-on-1 Consultation</label>
+                    <div class="consultation-group">
+                        <input type="date" id="consult-date" name="consultation_date" value="2025-02-04" required>
+                        <select id="consult-time" name="consultation_time" required>
+                            <option value="">-- Select Time --</option>
+                            <option value="09:00">9:00 AM</option>
+                            <option value="10:00">10:00 AM</option>
+                            <option value="11:00">11:00 AM</option>
+                            <option value="12:00">12:00 PM</option>
+                            <option value="13:00">1:00 PM</option>
+                            <option value="14:00">2:00 PM</option>
+                            <option value="15:00">3:00 PM</option>
+                        </select>
+                        <select id="time-zone" name="time_zone" required>
+                            <option value="">-- Select Time Zone --</option>
+                            <option value="EST">EST</option>
+                            <option value="PST">PST</option>
+                            <option value="CST">CST</option>
+                            <option value="GMT">GMT</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="cta-btn">Lock In My Registration</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Contact FDC Services: cs@ijtechnologz.com | (555) 123-4567</p>
+            <p>Availability: 9:00 AM to 3:00 PM</p>
+            <p>Your shortcut to SMS domination.</p>
+        </div>
+    </footer>
+
+    <script>
+        console.log("Page loaded!");
+    </script>
+</body>
+</html>
