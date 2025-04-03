@@ -186,6 +186,27 @@
             max-width: 800px;
             margin: 0 auto 30px;
         }
+        /* Animation for Discount Highlight */
+        .highlight-discount {
+            font-weight: 700;
+            color: #ff5722;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                color: #ff5722;
+            }
+            50% {
+                transform: scale(1.2);
+                color: #ff8a50;
+            }
+            100% {
+                transform: scale(1);
+                color: #ff5722;
+            }
+        }
         /* Form Section */
         .form-section {
             background: #fff;
@@ -369,8 +390,9 @@
     <section class="pricing">
         <div class="container">
             <h2>Premium Service, Priced to Win</h2>
-            <p>Say goodbye to 10 DLC headaches for just $199—our flat-rate package covers everything, no matter the provider. Complex setup? Book a free consultation for a custom plan.</p>
-            <button class="cta-btn" onclick="document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' })">Grab My $199 Deal Now</button>
+            <p id="discount-text">Introductory Offer: Just <span class="highlight-discount">$99</span> (Limited Time! Normal Price: $129). We handle your 10DLC registration approval with unlimited attempts and a free consultation call.</p>
+            <p><strong>Note:</strong> Provider fees (e.g., <strong>RingCentral: $25 per attempt, max 3 attempts = $75</strong>; <strong>Twilio: $44 Standard Brand or $4 Low-Volume + $15 per campaign submission</strong>) and per-message charges (e.g., <strong>Twilio: $0.0079 per SMS + carrier fees</strong>) are not included and will be paid directly to your provider. Our service focuses <strong>solely on getting your 10DLC registration approved</strong>.</p>
+            <button class="cta-btn" onclick="document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' })">Grab My $99 Deal Now</button>
         </div>
     </section>
 
@@ -378,8 +400,9 @@
     <section id="form-section" class="form-section">
         <div class="container">
             <h2>Your SMS Campaigns Start Here</h2>
-            <p>Give us a few details, and FDC Services will handle your 10 DLC Registration—no stress, no delays.</p>
-            <form action="https://formspree.io/f/meoararg" method="POST">
+            <p>Give us a few details, and FDC Services will handle your 10DLC Registration—no stress, no delays. We ensure your registration gets approved, so you can focus on your SMS campaigns.</p>
+            <p><strong>Important:</strong> Our service covers <strong>only the 10DLC registration approval process</strong>. Provider fees (e.g., <strong>RingCentral: $25 per attempt, max 3 attempts = $75</strong>; <strong>Twilio: $44 Standard Brand or $4 Low-Volume + $15 per campaign submission</strong>) and per-message charges (e.g., <strong>Twilio: $0.0079 per SMS + carrier fees</strong>) will be your responsibility, paid directly to your provider.</p>
+            <form id="fdc-form" method="POST">
                 <div class="form-group">
                     <label for="full-name">Full Name</label>
                     <input type="text" id="full-name" name="full_name" required>
@@ -445,8 +468,42 @@
     </footer>
 
     <script>
-        // JavaScript for smooth scrolling (already present in your code)
-        // No need for handleSubmit anymore since Formspree will handle the submission
+        // Form submission handler
+        document.getElementById("fdc-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Form data collect karo
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            // Google Apps Script Web App URL (apna URL yahan daal do)
+            const webAppUrl = "PASTE_YOUR_WEB_APP_URL_HERE"; // Yahan apna Web App URL paste kar do
+
+            // Data ko JSON format mein bhejo
+            fetch(webAppUrl, {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.status === "success") {
+                    alert("Form submitted successfully! We'll get back to you soon.");
+                    document.getElementById("fdc-form").reset(); // Form reset karo
+                } else {
+                    alert("Error submitting form: " + result.message);
+                }
+            })
+            .catch(error => {
+                alert("Error: " + error.message);
+            });
+        });
+
         console.log("Page loaded!");
     </script>
 </body>
