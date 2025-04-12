@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FDC Services - 10 DLC Registration</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>FDC Service - 10 DLC Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -25,7 +25,7 @@
         }
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            background: linear-gradient(135deg, #023047, #0090c1);
             color: white;
             text-align: center;
             padding: 80px 20px;
@@ -58,7 +58,7 @@
             z-index: 1;
         }
         .cta-btn {
-            background: linear-gradient(45deg, #ff5722, #ff8a50);
+            background: linear-gradient(45deg, #0090c1, #38aecc);
             color: white;
             padding: 15px 40px;
             border: none;
@@ -72,7 +72,7 @@
         }
         .cta-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(255, 214, 10, 0.5); /* Yellow accent */
         }
         /* Why Choose Us */
         .why-choose {
@@ -84,7 +84,7 @@
             font-size: 2.5em;
             font-weight: 600;
             margin-bottom: 20px;
-            color: #1a73e8;
+            color: #0090c1;
         }
         .why-choose p {
             font-size: 1.1em;
@@ -102,15 +102,15 @@
             background: #f4f7fa;
             padding: 20px;
             border-radius: 10px;
-            transition: transform 0.3s;
+            transition: transform 0.3s, background 0.3s;
         }
         .benefit:hover {
             transform: translateY(-5px);
-            background: #e8eef5;
+            background: #38aecc20;
         }
         .benefit strong {
             font-weight: 600;
-            color: #ff5722;
+            color: #0090c1;
         }
         /* How It Works */
         .how-it-works {
@@ -122,7 +122,7 @@
             font-size: 2.5em;
             font-weight: 600;
             margin-bottom: 20px;
-            color: #1a73e8;
+            color: #0090c1;
         }
         .steps {
             display: grid;
@@ -139,7 +139,7 @@
         .step h3 {
             font-size: 1.5em;
             font-weight: 600;
-            color: #ff5722;
+            color: #0090c1;
             margin-bottom: 10px;
         }
         /* Testimonials */
@@ -152,7 +152,7 @@
             font-size: 2.5em;
             font-weight: 600;
             margin-bottom: 20px;
-            color: #1a73e8;
+            color: #0090c1;
         }
         .testimonial {
             max-width: 800px;
@@ -166,7 +166,7 @@
             margin-top: 10px;
             font-style: normal;
             font-weight: 600;
-            color: #ff5722;
+            color: #0090c1;
         }
         /* Pricing */
         .pricing {
@@ -178,7 +178,7 @@
             font-size: 2.5em;
             font-weight: 600;
             margin-bottom: 20px;
-            color: #1a73e8;
+            color: #0090c1;
         }
         .pricing p {
             font-size: 1.1em;
@@ -186,22 +186,47 @@
             max-width: 800px;
             margin: 0 auto 30px;
         }
-        /* Animation for Discount Highlight */
+        /* Animation for $99 Highlight */
         .highlight-discount {
-            color: #ff5722;
-            font-weight: 700;
+            color: #0090c1;
+            font-weight: 900;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2em;
             display: inline-block;
-            animation: bounceGlow 2s infinite;
+            animation: pulseGlow 2s ease-in-out infinite;
+            text-shadow: 0 0 4px rgba(0, 144, 193, 0.5);
+            letter-spacing: 0.5px;
         }
-        @keyframes bounceGlow {
+        @keyframes pulseGlow {
             0%, 100% {
                 transform: scale(1);
-                text-shadow: 0 0 5px rgba(255, 87, 34, 0.5);
+                text-shadow: 0 0 4px rgba(0, 144, 193, 0.5), 0 0 6px rgba(255, 214, 10, 0.3);
             }
             50% {
-                transform: scale(1.1);
-                text-shadow: 0 0 15px rgba(255, 87, 34, 1);
+                transform: scale(1.08);
+                text-shadow: 0 0 10px rgba(0, 144, 193, 0.8), 0 0 12px rgba(255, 214, 10, 0.6);
             }
+        }
+        /* Coming Soon Section */
+        .coming-soon {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #ffffff;
+            border: 2px solid #ffd60a;
+            border-radius: 10px;
+            margin: 40px 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .coming-soon h2 {
+            font-size: 2em;
+            font-weight: 600;
+            color: #0090c1;
+            margin-bottom: 15px;
+        }
+        .coming-soon p {
+            font-size: 1.2em;
+            font-weight: 400;
+            color: #023047;
         }
         /* Form Section */
         .form-section {
@@ -215,7 +240,7 @@
             font-size: 2.5em;
             font-weight: 600;
             margin-bottom: 15px;
-            color: #1a73e8;
+            color: #0090c1;
         }
         .form-section p {
             font-size: 1.1em;
@@ -242,7 +267,7 @@
             transition: border-color 0.3s;
         }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            border-color: #1a73e8;
+            border-color: #0090c1;
             outline: none;
         }
         .form-group textarea {
@@ -254,7 +279,6 @@
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="gray"><polygon points="0,0 12,0 6,12"/></svg>') no-repeat right 15px center;
             background-size: 12px;
         }
-        /* Consultation Fields with Increased Spacing */
         .consultation-group {
             display: flex;
             flex-direction: column;
@@ -275,7 +299,7 @@
         footer {
             text-align: center;
             padding: 30px 20px;
-            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            background: linear-gradient(135deg, #023047, #0090c1);
             color: white;
         }
         footer p {
@@ -293,10 +317,10 @@
                 padding: 12px 30px;
                 font-size: 1em;
             }
-            .why-choose h2, .how-it-works h2, .testimonials h2, .pricing h2, .form-section h2 {
+            .why-choose h2, .how-it-works h2, .testimonials h2, .pricing h2, .coming-soon h2, .form-section h2 {
                 font-size: 2em;
             }
-            .form-section {
+            .form-section, .coming-soon {
                 padding: 40px 20px;
                 margin: 40px 10px;
             }
@@ -312,10 +336,10 @@
                 padding: 10px 25px;
                 font-size: 0.9em;
             }
-            .why-choose h2, .how-it-works h2, .testimonials h2, .pricing h2, .form-section h2 {
+            .why-choose h2, .how-it-works h2, .testimonials h2, .pricing h2, .coming-soon h2, .form-section h2 {
                 font-size: 1.8em;
             }
-            .form-section {
+            .form-section, .coming-soon {
                 padding: 30px 15px;
                 margin: 30px 5px;
             }
@@ -326,8 +350,8 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Unlock SMS Success with FDC Services</h1>
-            <p>Don’t let the complex 10 DLC Registration process hold you back. We’ll get you approved for RingCentral, OpenPhone, Twilio, SignalWire—or any provider—in record time.</p>
+            <h1>Unlock SMS Success with FDC Service</h1>
+            <p>We’ll get your 10 DLC Brand & Campaign approved fast with expert setup for any provider. You only pay our service fee—platform charges are on you.</p>
             <button class="cta-btn" onclick="document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' })">Claim My Registration Spot Now</button>
         </div>
     </section>
@@ -335,13 +359,14 @@
     <!-- Why Choose Us -->
     <section class="why-choose">
         <div class="container">
-            <h2>Why Choose FDC Services?</h2>
-            <p>The 10 DLC Registration process is a maze of paperwork, rules, and delays—unless you have us. We specialize in fast-tracking approvals for any provider. Why struggle when you can succeed?</p>
+            <h2>Why Choose FDC Service?</h2>
+            <p>We take the headache out of 10 DLC registration, handling the full process so you can focus on your SMS campaigns. You cover the platform costs—we cover the expertise.</p>
             <div class="benefits">
                 <div class="benefit"><strong>Approvals in Days</strong><br>Not weeks—get started fast.</div>
                 <div class="benefit"><strong>Any Provider</strong><br>From Twilio to SignalWire.</div>
                 <div class="benefit"><strong>Unbeatable Value</strong><br>Premium service, fair price.</div>
                 <div class="benefit"><strong>Expert Guidance</strong><br>We’ve got your back.</div>
+                <div class="benefit"><strong>Clear Scope</strong><br>We handle registration; you pay TCR and provider fees directly.</div>
             </div>
         </div>
     </section>
@@ -356,12 +381,12 @@
                     <p>We start with a one-on-one consultation to fully understand your goals and requirements.</p>
                 </div>
                 <div class="step">
-                    <h3>Step 2: We Do the Heavy Lifting</h3>
-                    <p>Leave everything to us—our experts handle the entire 10 DLC Registration process for you.</p>
+                    <h3>Step 2: We Handle Registration</h3>
+                    <p>Our experts manage your TCR Brand & Campaign registration and provider setup. You pay the TCR submission and platform fees directly.</p>
                 </div>
                 <div class="step">
                     <h3>Step 3: Start Texting</h3>
-                    <p>Get approved and watch your SMS campaigns soar with seamless support.</p>
+                    <p>Get approved and launch your SMS campaigns with your chosen provider.</p>
                 </div>
             </div>
         </div>
@@ -372,11 +397,11 @@
         <div class="container">
             <h2>What Our Clients Say</h2>
             <div class="testimonial">
-                <p>"We were stuck with rejections for our 10 DLC Registration. FDC Services stepped in, got us verified and approved, and now our SMS campaigns are thriving!"</p>
+                <p>"We were stuck with rejections for our 10 DLC Registration. FDC Service stepped in, got us verified and approved, and now our SMS campaigns are thriving!"</p>
                 <strong>IJ Wireless Inc.</strong>
             </div>
             <div class="testimonial">
-                <p>"FDC Services made the 10 DLC process effortless. They handled everything, and now we’re seeing huge success with SMS in play. SMS support is critical, and they delivered!"</p>
+                <p>"FDC Service made the 10 DLC process effortless. They handled everything, and now we’re seeing huge success with SMS in play. SMS support is critical, and they delivered!"</p>
                 <strong>Magnet Wireless Inc.</strong>
             </div>
         </div>
@@ -386,9 +411,19 @@
     <section class="pricing">
         <div class="container">
             <h2>Premium Service, Priced to Win</h2>
-            <p id="discount-text">Introductory Offer: <span class="highlight-discount">Just $99</span> (Limited Time! Normal Price: $129). We handle your 10DLC registration approval with unlimited attempts and a free consultation call.</p>
-            <p><strong>Note:</strong> Provider fees (<strong>RingCentral: $25 per attempt, max 3 attempts = $75</strong>; <strong>Twilio: $44 Standard Brand or $4 Low-Volume + $15 per campaign submission</strong>) and per-message charges (<strong>Twilio: $0.0079 per SMS + carrier fees</strong>) are not included and will be paid directly to your provider. <strong>Our service focuses solely on getting your 10DLC registration approved.</strong></p>
+            <p id="discount-text">Introductory Offer: <span class="highlight-discount">Just $99</span> (Limited Time! Normal Price: $129). We handle your full 10 DLC registration process.</p>
+            <p><strong>What You Get:</strong> Brand Registration via The Campaign Registry (TCR), Campaign Approval for SMS Messaging, Setup with your preferred provider (Twilio, OpenPhone, etc.), Expert support & 1-on-1 guidance.</p>
+            <p><strong>What’s Not Included:</strong> TCR Submission Costs (paid directly to the platform), Messaging Platform Subscription Fees (e.g., Twilio, RingCentral), Monthly charges for phone numbers or messages.</p>
+            <p><strong>Example Costs You’ll Pay Directly:</strong> Twilio: $44 Standard Brand or $4 Low-Volume + $15/campaign; RingCentral: $25/attempt (max 3 attempts = $75); Twilio SMS: $0.0079/message + carrier fees.</p>
             <button class="cta-btn" onclick="document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' })">Grab My $99 Deal Now</button>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="coming-soon">
+        <div class="container">
+            <h2>More Services on the Way!</h2>
+            <p>Get ready for Customer Support and Truck Dispatching services from FDC Service—coming soon to supercharge your business!</p>
         </div>
     </section>
 
@@ -396,15 +431,13 @@
     <section id="form-section" class="form-section">
         <div class="container">
             <h2>Your SMS Campaigns Start Here</h2>
-            <p>Give us a few details, and FDC Services will handle your 10DLC Registration—no stress, no delays. We ensure your registration gets approved, so you can focus on your SMS campaigns.</p>
-            <p><strong>Important:</strong> <strong>Our service covers only the 10DLC registration approval process.</strong> Provider fees (<strong>RingCentral: $25 per attempt, max 3 attempts = $75</strong>; <strong>Twilio: $44 Standard Brand or $4 Low-Volume + $15 per campaign submission</strong>) and per-message charges (<strong>Twilio: $0.0079 per SMS + carrier fees</strong>) will be your responsibility, paid directly to your provider.</p>
+            <p>We’ll get your 10 DLC registration approved fast. You only pay our $99 service fee—platform and TCR costs are your responsibility.</p>
+            <p><strong>Our Service Includes:</strong> TCR Brand & Campaign Registration + Provider Setup. <strong>You Pay Directly:</strong> TCR submission fees, provider subscriptions, and messaging costs.</p>
             <form action="https://formsubmit.co/cs@ijtechnologz.com" method="POST">
-                <!-- Hidden Fields for FormSubmit -->
                 <input type="hidden" name="_subject" value="New 10DLC Registration Request">
                 <input type="hidden" name="_next" value="https://lovebreather.github.io/fdcservices.com/thanks.html">
-                <input type="hidden" name="_autoresponse" value="Thank you for signing up with FDC Services! We have received your request and will contact you soon for your consultation.">
+                <input type="hidden" name="_autoresponse" value="Thank you for signing up with FDC Service! We have received your request and will contact you soon for your consultation.">
                 <input type="hidden" name="_captcha" value="true">
-                <!-- Form Fields -->
                 <div class="form-group">
                     <label for="full-name">Full Name</label>
                     <input type="text" id="full-name" name="full_name" required>
@@ -435,7 +468,7 @@
                 <div class="form-group">
                     <label>Book a Free 1-on-1 Consultation</label>
                     <div class="consultation-group">
-                        <input type="date" id="consult-date" name="consultation_date" value="2025-02-04" required>
+                        <input type="date" id="consult-date" name="consultation_date" value="2025-04-14" required>
                         <select id="consult-time" name="consultation_time" required>
                             <option value="">-- Select Time --</option>
                             <option value="09:00">9:00 AM</option>
@@ -463,7 +496,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>Contact FDC Services: cs@ijtechnologz.com | (555) 123-4567</p>
+            <p>Contact FDC Service: cs@ijtechnologz.com | (555) 123-4567</p>
             <p>Availability: 9:00 AM to 3:00 PM</p>
             <p>Your shortcut to SMS domination.</p>
         </div>
