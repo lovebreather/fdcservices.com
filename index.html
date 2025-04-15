@@ -316,6 +316,59 @@
             transform: scale(1.05);
             box-shadow: 0 5px 15px rgba(255, 214, 10, 0.5);
         }
+        /* Confirmation Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            animation: fadeIn 0.3s ease-out;
+        }
+        .modal-content p {
+            font-size: 1.1em;
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+        .modal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .modal-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .modal-btn.yes {
+            background: var(--primary-color);
+            color: white;
+        }
+        .modal-btn.no {
+            background: var(--accent-color);
+            color: var(--button-text);
+        }
+        .modal-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
         /* Pop-up Notification */
         .popup {
             position: fixed;
@@ -415,6 +468,9 @@
                 flex-direction: column;
                 text-align: center;
             }
+            .modal-content {
+                width: 80%;
+            }
         }
         @media (max-width: 480px) {
             .hero h1 { font-size: 1.8em; }
@@ -429,6 +485,9 @@
             }
             .service-card {
                 max-width: 100%;
+            }
+            .modal-content {
+                width: 90%;
             }
         }
     </style>
@@ -512,13 +571,13 @@
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea id="description" name="description" placeholder="Tell us about your needs"></textarea>
+                    <textarea id="description" name="description" placeholder="Tell us about your needs" required></textarea>
                 </div>
                 <div class="form-group">
-                    <label>Book a Consultation</label>
+                    <label>Book a Consultation (Optional)</label>
                     <div class="consultation-group">
-                        <input type="date" id="consult-date" name="consultation_date" value="2025-04-15" required>
-                        <select id="consult-time" name="consultation_time" required>
+                        <input type="date" id="consult-date" name="consultation_date">
+                        <select id="consult-time" name="consultation_time">
                             <option value="">-- Select Time --</option>
                             <option value="09:00">9:00 AM</option>
                             <option value="10:00">10:00 AM</option>
@@ -528,7 +587,7 @@
                             <option value="14:00">2:00 PM</option>
                             <option value="15:00">3:00 PM</option>
                         </select>
-                        <select id="time-zone" name="time_zone" required>
+                        <select id="time-zone" name="time_zone">
                             <option value="">-- Select Time Zone --</option>
                             <option value="EST">EST</option>
                             <option value="PST">PST</option>
@@ -619,17 +678,29 @@
         </div>
     </footer>
 
+    <!-- Confirmation Modal -->
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content">
+            <p>Are you sure that you don't want a free one-on-one call session?</p>
+            <div class="modal-buttons">
+                <button class="modal-btn yes" onclick="submitForm()">Yes</button>
+                <button class="modal-btn no" onclick="closeModal()">No</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Pop-up Notification -->
     <div id="popup" class="popup">Message Sent Successfully!</div>
 
     <script>
+        let formToSubmit = null;
+
         // Theme Toggle with Local Storage
         window.addEventListener('load', function() {
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark-mode');
             } else {
-                // Default to light mode if no theme is saved
                 document.body.classList.remove('dark-mode');
                 localStorage.setItem('theme', 'light');
             }
@@ -640,14 +711,41 @@
             localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
         }
 
-        // Form Submission Pop-up
+        // Form Submission with Confirmation Prompt
         document.getElementById('contact-form').addEventListener('submit', function(e) {
-            setTimeout(() => {
-                const popup = document.getElementById('popup');
-                popup.classList.add('show');
-                setTimeout(() => popup.classList.remove('show'), 3000);
-            }, 1000);
+            e.preventDefault();
+            const consultDate = document.getElementById('consult-date').value;
+            const consultTime = document.getElementById('consult-time').value;
+            const timeZone = document.getElementById('time-zone').value;
+
+            // Check if consultation fields are empty
+            if (!consultDate && !consultTime && !timeZone) {
+                formToSubmit = this;
+                document.getElementById('confirmation-modal').style.display = 'flex';
+            } else {
+                this.submit();
+                showPopup();
+            }
         });
+
+        function submitForm() {
+            if (formToSubmit) {
+                formToSubmit.submit();
+                showPopup();
+            }
+            closeModal();
+        }
+
+        function closeModal() {
+            document.getElementById('confirmation-modal').style.display = 'none';
+            formToSubmit = null;
+        }
+
+        function showPopup() {
+            const popup = document.getElementById('popup');
+            popup.classList.add('show');
+            setTimeout(() => popup.classList.remove('show'), 3000);
+        }
 
         // Scroll Animation Trigger
         const animateOnScroll = () => {
