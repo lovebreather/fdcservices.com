@@ -293,8 +293,30 @@
         }
         .form-group select {
             appearance: none;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="gray"><polygon points="0,0 12,0 6,12"/></svg>') no-repeat right 15px center;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="%23ffd60a"><polygon points="0,0 12,0 6,12"/></svg>') no-repeat right 15px center;
             background-size: 12px;
+            padding-right: 30px;
+            font-weight: 500;
+        }
+        body.dark-mode .form-group select {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="%23d4b008"><polygon points="0,0 12,0 6,12"/></svg>') no-repeat right 15px center;
+            background-size: 12px;
+        }
+        .form-group select option {
+            background: var(--card-bg);
+            color: var(--text-color);
+        }
+        .form-group select option:hover {
+            background: var(--accent-color) !important;
+            color: var(--button-text) !important;
+        }
+        .form-group select:not([value=""]) {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        .form-group select[value=""] {
+            color: #888;
         }
         .consultation-group {
             display: flex;
@@ -638,12 +660,12 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-contact">
-                    <a href="mailto:info@fdcservice.com">
+                    <a href="mailto:cs@ijtechnologz.com">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                             <polyline points="22,6 12,13 2,6"></polyline>
                         </svg>
-                        info@fdcservice.com
+                        cs@ijtechnologz.com
                     </a>
                     <a href="tel:(555)123-4567">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
