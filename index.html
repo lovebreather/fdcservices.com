@@ -4,8 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="FDC Service - Expert 10 DLC registration and upcoming Customer Support & Truck Dispatching services.">
+    <!-- Add CSP meta tag to allow Tawk.to scripts -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://embed.tawk.to 'unsafe-inline';">
     <title>FDC Service - SMS Solutions & More</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Tawk.to Script moved to head with defer -->
+    <script defer type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function(){
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/67ffb9535a45d4191c98d613/1iovenrv7';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s1.onload = function() { console.log("Tawk.to script loaded successfully"); };
+            s1.onerror = function() { console.error("Failed to load Tawk.to script"); };
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
     <style>
         * {
             margin: 0;
@@ -54,7 +70,6 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-        /* Navbar */
         .navbar {
             background: var(--nav-bg);
             position: sticky;
@@ -95,7 +110,6 @@
         .theme-toggle .moon-icon { display: inline; }
         body.dark-mode .theme-toggle .sun-icon { display: inline; }
         body.dark-mode .theme-toggle .moon-icon { display: none; }
-        /* Hero Section */
         .hero {
             background: var(--hero-bg);
             color: white;
@@ -145,7 +159,6 @@
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.03); }
         }
-        /* 10 DLC Registration Section */
         .dlc-section {
             padding: 80px 20px;
             text-align: center;
@@ -177,7 +190,6 @@
         .dlc-content strong {
             color: var(--accent-color);
         }
-        /* Upcoming Services Section */
         .upcoming-services {
             padding: 80px 20px;
             text-align: center;
@@ -226,7 +238,6 @@
             0% { opacity: 0; transform: translateY(20px); }
             100% { opacity: 1; transform: translateY(0); }
         }
-        /* Testimonials Section */
         .testimonials {
             padding: 80px 20px;
             text-align: center;
@@ -257,7 +268,6 @@
             font-weight: 600;
             color: var(--primary-color);
         }
-        /* Contact Form (Inside DLC Section) */
         .dlc-section form {
             max-width: 600px;
             margin: 0 auto;
@@ -338,7 +348,6 @@
             transform: scale(1.05);
             box-shadow: 0 5px 15px rgba(255, 214, 10, 0.5);
         }
-        /* Confirmation Modal */
         .modal {
             display: none;
             position: fixed;
@@ -391,7 +400,6 @@
             transform: scale(1.05);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-        /* Pop-up Notification */
         .popup {
             position: fixed;
             top: 20px;
@@ -409,7 +417,6 @@
             opacity: 1;
             pointer-events: auto;
         }
-        /* Footer */
         footer {
             background: var(--footer-bg);
             color: white;
@@ -472,7 +479,6 @@
             color: var(--accent-color);
             text-shadow: 0 0 5px rgba(255, 214, 10, 0.5);
         }
-        /* Responsive Design */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2em; }
             .hero p { font-size: 1em; }
@@ -515,7 +521,6 @@
     </style>
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="container">
             <div class="nav-links">
@@ -524,7 +529,7 @@
                 <a href="#upcoming-services">Upcoming Services</a>
                 <a href="#testimonials">Testimonials</a>
             </div>
-            <button class="theme-toggle" onclick="toggleTheme()">
+            <button class="theme-toggle" id="theme-toggle">
                 <svg class="icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="5"></circle>
                     <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -543,7 +548,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
             <h1>Power Your SMS with FDC Service</h1>
@@ -552,7 +556,6 @@
         </div>
     </section>
 
-    <!-- 10 DLC Registration Section -->
     <section id="dlc" class="dlc-section">
         <div class="container">
             <h2>Effortless 10 DLC Registration with FDC Service</h2>
@@ -623,7 +626,6 @@
         </div>
     </section>
 
-    <!-- Upcoming Services Section -->
     <section id="upcoming-services" class="upcoming-services">
         <div class="container">
             <h2>Upcoming Services</h2>
@@ -640,7 +642,6 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials">
         <div class="container">
             <h2>What Our Clients Say</h2>
@@ -655,23 +656,16 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-contact">
-                    <a href="mailto:cs@ijtechnologz.com">
+                    <a href="mailto:info@fdcservice.com">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                             <polyline points="22,6 12,13 2,6"></polyline>
                         </svg>
-                        cs@ijtechnologz.com
-                    </a>
-                    <a href="tel:(555)123-4567">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                        </svg>
-                        (555) 123-4567
+                        info@fdcservice.com
                     </a>
                 </div>
                 <div class="footer-contact">
@@ -700,99 +694,10 @@
         </div>
     </footer>
 
-    <!-- Confirmation Modal -->
     <div id="confirmation-modal" class="modal">
         <div class="modal-content">
             <p>Are you sure that you don't want a free one-on-one call session?</p>
             <div class="modal-buttons">
                 <button class="modal-btn yes" onclick="submitForm()">Yes</button>
                 <button class="modal-btn no" onclick="closeModal()">No</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Pop-up Notification -->
-    <div id="popup" class="popup">Message Sent Successfully!</div>
-
-    <script>
-        let formToSubmit = null;
-
-        // Theme Toggle with Local Storage
-        window.addEventListener('load', function() {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark-mode');
-            } else {
-                document.body.classList.remove('dark-mode');
-                localStorage.setItem('theme', 'light');
-            }
-        });
-
-        function toggleTheme() {
-            document.body.classList.toggle('dark-mode');
-            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-        }
-
-        // Form Submission with Confirmation Prompt
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const consultDate = document.getElementById('consult-date').value;
-            const consultTime = document.getElementById('consult-time').value;
-            const timeZone = document.getElementById('time-zone').value;
-
-            // Check if consultation fields are empty
-            if (!consultDate && !consultTime && !timeZone) {
-                formToSubmit = this;
-                document.getElementById('confirmation-modal').style.display = 'flex';
-            } else {
-                this.submit();
-                showPopup();
-            }
-        });
-
-        function submitForm() {
-            if (formToSubmit) {
-                formToSubmit.submit();
-                showPopup();
-            }
-            closeModal();
-        }
-
-        function closeModal() {
-            document.getElementById('confirmation-modal').style.display = 'none';
-            formToSubmit = null;
-        }
-
-        function showPopup() {
-            const popup = document.getElementById('popup');
-            popup.classList.add('show');
-            setTimeout(() => popup.classList.remove('show'), 3000);
-        }
-
-        // Scroll Animation Trigger
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.service-card, .testimonial');
-            elements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top <= window.innerHeight * 0.8) {
-                    el.style.opacity = '1';
-                }
-            });
-        };
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
-
-        // Navigation Links
-        document.querySelectorAll('.navbar a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href').substring(1);
-                const targetSection = document.getElementById(targetId);
-                if (targetSection) {
-                    targetSection.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+            </div
