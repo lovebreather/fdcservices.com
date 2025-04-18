@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="FDC Service - Expert 10 DLC registration and upcoming Customer Support & Truck Dispatching services.">
-    <!-- Add CSP meta tag to allow Tawk.to scripts -->
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://embed.tawk.to 'unsafe-inline';">
     <title>FDC Service - SMS Solutions & More</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Tawk.to Script moved to head with defer -->
     <script defer type="text/javascript">
         var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
         (function(){
@@ -17,7 +15,15 @@
             s1.src = 'https://embed.tawk.to/67ffb9535a45d4191c98d613/1iovenrv7';
             s1.charset = 'UTF-8';
             s1.setAttribute('crossorigin', '*');
-            s1.onload = function() { console.log("Tawk.to script loaded successfully"); };
+            s1.onload = function() { 
+                console.log("Tawk.to script loaded successfully");
+                if (typeof Tawk_API.onLoad === 'function') {
+                    Tawk_API.onLoad();
+                    console.log("Tawk.to widget initialized");
+                } else {
+                    console.log("Tawk.to widget not initialized - onLoad not available");
+                }
+            };
             s1.onerror = function() { console.error("Failed to load Tawk.to script"); };
             s0.parentNode.insertBefore(s1, s0);
         })();
@@ -566,7 +572,7 @@
                 <p>Trusted by <strong>IJ Wireless Inc.</strong> & <strong>Magnet Wireless Inc.</strong>—approved after months of rejections, now enjoying thriving SMS campaigns!</p>
                 <p><strong>Get started today—fill the form below!</strong></p>
             </div>
-            <form id="contact-form" action="https://formsubmit.co/cs@ijtechnologz.com" method="POST">
+            <form id="contact-form" action="https://formsubmit.co/info@fdcservice.com" method="POST">
                 <input type="hidden" name="_subject" value="New FDC Service Inquiry">
                 <input type="hidden" name="_next" value="https://lovebreather.github.io/fdcservices.com/thanks.html">
                 <input type="hidden" name="_autoresponse" value="Thank you for reaching out to FDC Service! We'll get back to you soon.">
@@ -700,4 +706,108 @@
             <div class="modal-buttons">
                 <button class="modal-btn yes" onclick="submitForm()">Yes</button>
                 <button class="modal-btn no" onclick="closeModal()">No</button>
-            </div
+            </div>
+        </div>
+    </div>
+
+    <div id="popup" class="popup">Message Sent Successfully!</div>
+
+    <script>
+        let formToSubmit = null;
+
+        // Theme Toggle with Local Storage
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light');
+            }
+
+            // Attach event listener programmatically
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', toggleTheme);
+            } else {
+                console.error("Theme toggle button not found");
+            }
+        });
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+            console.log("Theme toggled to:", document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        }
+
+        // Form Submission with Confirmation Prompt
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const consultDate = document.getElementById('consult-date').value;
+                    const consultTime = document.getElementById('consult-time').value;
+                    const timeZone = document.getElementById('time-zone').value;
+
+                    if (!consultDate && !consultTime && !timeZone) {
+                        formToSubmit = this;
+                        document.getElementById('confirmation-modal').style.display = 'flex';
+                    } else {
+                        this.submit();
+                        showPopup();
+                    }
+                });
+            } else {
+                console.error("Contact form not found");
+            }
+        });
+
+        function submitForm() {
+            if (formToSubmit) {
+                formToSubmit.submit();
+                showPopup();
+            }
+            closeModal();
+        }
+
+        function closeModal() {
+            document.getElementById('confirmation-modal').style.display = 'none';
+            formToSubmit = null;
+        }
+
+        function showPopup() {
+            const popup = document.getElementById('popup');
+            popup.classList.add('show');
+            setTimeout(() => popup.classList.remove('show'), 3000);
+        }
+
+        // Scroll Animation Trigger
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.service-card, .testimonial');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top <= window.innerHeight * 0.8) {
+                    el.style.opacity = '1';
+                }
+            });
+        };
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // Navigation Links
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.navbar a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
